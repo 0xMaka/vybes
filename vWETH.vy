@@ -14,7 +14,6 @@ event Approval:
   wad: uint256
 
 event Transfer:
-  
   src: indexed(address)
   dst: indexed(address)
   wad: uint256 
