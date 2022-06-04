@@ -4,8 +4,7 @@ For fun and study, with some vy (and maybe a lil py).
 rescue.vy - ^0.3.3
 - testing: new dynamic arrays with vyper 0.3.3; the swap would have previously needed a raw_call (can see interface.vy).
 - contract: will recover usdc sent to the SushiV2Router on goerli. 
-  removeLiquidityETHSupportingFeeOnTransferTokens, can be used to rescue tokens stuck at an address, hold tight HK for first showing me that one.
-  there are some variations on it, you can get mileage from the concept of burning tokens to free tokens.
+  removeLiquidityETHSupportingFeeOnTransferTokens, can be used to rescue tokens stuck at an address, hold tight HK for first showing me that one. There are some variations on it, you can get mileage from the concept of burning tokens to free tokens.
 - instructions: none
 
 vWETH.vy - ^0.2.16
@@ -25,11 +24,4 @@ VIM.vy - ^0.2.16
   chain agnostic
 - instructions: none 
 [+] - to be replaced with generic example
-
-basicSwap - ^0.2.16
-- testing: a variety of raw_calls, and a basic swap
-- contract: will take an input token, output token, exact amount to swap from, and minimum amount to receive before revert.
-  swaps via swapExactTokensForTokens() at a set router.
-- instructions: constructor argument is just a router address. Any univ2 style router should work.
-[!] - likely to be removed, as interface.vy includes a more detailed version of the same thing.
 
