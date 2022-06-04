@@ -14,6 +14,7 @@ event Approval:
   wad: uint256
 
 event Transfer:
+  
   src: indexed(address)
   dst: indexed(address)
   wad: uint256 
@@ -76,9 +77,11 @@ def transfer(dst: address, wad: uint256) -> bool:
 
 @external
 def transferFrom(src: address, dst: address, wad: uint256) -> bool:
+  allowance: uint256 = self.allowance[src][msg.sender]
+  if (src != msg.sender and allowance < MAX_UINT256):
+    self.allowance[src][msg.sender] = allowance - wad
   self.balanceOf[src] -= wad
   self.balanceOf[dst] += wad
-  self.allowance[src][msg.sender] -= wad
   log Transfer(src, dst, wad)
   return True 
 
