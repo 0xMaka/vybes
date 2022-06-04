@@ -13,6 +13,7 @@ vWETH.vy - ^0.2.16
   nor call an external function internally. Can also note a lack of requires or asserts, since they arent needed. Vyper will revert on underflow.
 - contract: will launch a standard WETH9 style contract, chain agnostic.
 - instructions: none
+[+] - look at replacing public variables with constants, instead creating @view functions for those
 
 interface.vy - ^0.2.16
 - testing: different types of external functions calls, interfacing with contracts, includes a work around for handling dynamic arrays pre 0.3.3.
