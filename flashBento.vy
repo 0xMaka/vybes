@@ -51,7 +51,7 @@ def __default__():
 # `amount` + `fee` needs to be repayed to msg.sender before call returns.
 # @notice The function bento will callback, giving us access to the following args. 
 # @param sender: address of the invoker.
-# @param token: address of the token token loaned.
+# @param token: address of the token loaned.
 # @param amount: quantity of `token` loaned.
 # @param fee: amount that needs to be paid for loan. Same as `token`.
 # @param data: the calldata we passed to flashloan function.
