@@ -13,6 +13,12 @@ vWETH.vy - ^0.2.16
 - instructions: none
 [+] - look at replacing public variables with constants, instead creating @view functions for those
 
+flashBento.vy - ^0.2.8
+- testing: ease with which we can perform a flash loan via bentobox.
+- contract: will deploy a simple contract on can use to test the flash loan function of bentobox on any network.
+- instructions: constructor takes weth and bento address
+[+] - will add more flash loan examples on other contracts
+
 interface.vy - ^0.2.16
 - testing: different types of external functions calls, interfacing with contracts, includes a work around for handling dynamic arrays pre 0.3.3.
 - contract: will launch an "interfacestation" that you can use to view a balance of a token, total supply or exchange two tokens using the router provided.
