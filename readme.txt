@@ -15,7 +15,7 @@ vWETH.vy - ^0.2.16
 
 flashBento.vy - ^0.2.8
 - testing: ease with which we can perform a flash loan via bentobox.
-- contract: will deploy a simple contract on can use to test the flash loan function of bentobox on any network.
+- contract: will deploy a simple contract one can use to test the flash loan function of bentobox on any network.
 - instructions: constructor takes weth and bento address
 [+] - will add more flash loan examples on other contracts
 
