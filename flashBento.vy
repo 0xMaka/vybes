@@ -1,30 +1,25 @@
-# @version 0.2.8
-# @title flash_bento.vy
+# @version ^0.2.8
+# @title flashBento.vy
 # @notice a simple example using vyper for a flash loan from Sushi's BentoBox
 # @author Maka
 # --
 
 
 # @notice bento's flashloan ability.
-# @param borrower: address of the contract to be called back.
-# @param receiver: address of the token receiver.
-# @param token: address of the token to receive.
-# @param amount: number of the tokens to receive.
-# @param calldata: encoded data to pass to the `borrower` contract.
 interface Bento:
   def flashLoan(
-    borrower: address, 
-    receiver: address, 
-    token: address, 
-    amount: uint256, 
-    data: Bytes[b]
+    borrower: address, # @param borrower: address of the contract to be called back.
+    receiver: address, # @param receiver: address of the token receiver.
+    token: address,    # @param token: address of the token to receive.
+    amount: uint256,   # @param amount: number of the tokens to receive.
+    data: Bytes[B]     # @param calldata: encoded data to pass to the `borrower` contract.
   ): nonpayable
 
 interface IERC20:
   def balanceOf(account: address) -> uint256: view
   def transfer(recipient: address, amount: uint256) -> bool: nonpayable
  
-b: constant(uint256) = 32 * 8
+B: constant(uint256) = 32 * 8
 admin: address
 bento: public(address)
 weth: public(address)
@@ -47,16 +42,16 @@ def __default__():
 # --
 
 
-# function to be called back
-# `amount` + `fee` needs to be repayed to msg.sender before call returns.
-# @notice The function bento will callback, giving us access to the following args. 
-# @param sender: address of the invoker.
-# @param token: address of the token token loaned.
-# @param amount: quantity of `token` loaned.
-# @param fee: amount that needs to be paid for loan. Same as `token`.
-# @param data: the calldata we passed to flashloan function.
+# @notice the function that will be called back by bento.
+# `amount` + `fee` needs to be repayed to msg.sender (bento) before call returns.
 @external
-def onFlashLoan(sender: address, token: address, amount: uint256, fee: uint256, data: Bytes[b]):
+def onFlashLoan(
+    sender: address,  # @param sender: address of the invoker.
+    token: address,   # @param token: address of the token token loaned.
+    amount: uint256,  # @param amount: quantity of `token` loaned.
+    fee: uint256,     # @param fee: amount that needs to be paid for loan. Same as `token`.
+    data: Bytes[B]    # @param data: the calldata we passed to flashloan function.
+):
   assert msg.sender == self.bento
   total: uint256 = amount + fee
   # do something with the data
@@ -67,7 +62,7 @@ def onFlashLoan(sender: address, token: address, amount: uint256, fee: uint256, 
 
 # function we call to invoke the loan
 @external
-def borrow(_token:address, _amount:uint256, _data:Bytes[b]):
+def borrow(_token:address, _amount:uint256, _data:Bytes[B]):
   Bento(self.bento).flashLoan(self, self, _token, _amount, _data)
 # --
 
