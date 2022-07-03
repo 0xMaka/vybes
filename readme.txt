@@ -11,7 +11,6 @@ vWETH.vy - ^0.2.16
 - testing: what a weth implemented in vyper might look like. Some noteable diffs in the fallback and deposit, as you can't call functions pre declaraion in vyper, nor call an external function internally. Can also note a lack of requires or asserts, since they arent needed, vyper will revert on underflow.
 - contract: will launch a standard WETH9 style contract, chain agnostic.
 - instructions: none
-[+] - look at replacing public variables with constants, instead creating @view functions for those
 
 flashBento.vy - ^0.2.8
 - testing: ease with which we can perform a flash loan via bentobox.
