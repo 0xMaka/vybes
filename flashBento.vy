@@ -59,7 +59,7 @@ def onFlashLoan(
   # repay
   IERC20(token).transfer(self.bento, total)
 
-# function we call to invoke the loan
+# @notice function we call to invoke the loan
 @external
 def borrow(_token:address, _amount:uint256, _data:Bytes[B]):
   Bento(self.bento).flashLoan(self, self, _token, _amount, _data)
