@@ -65,12 +65,10 @@ def name() -> String[14]:
 def symbol() -> String[4]:
   return SYMBOL
 
-
 @external
 @view
 def decimals() -> uint256:
   return DECIMALS
-
 
 @external
 def approve(guy: address, wad: uint256) -> bool:
