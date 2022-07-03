@@ -1,12 +1,12 @@
-# @version ^0.2.16
+# @version ^0.3.3
 # 
 # @notice WETH implementation in vy
 # @author Maka
-# @title vWETH
+# @title vWETH9
 
-name: public(String[14])   # = 'Wrapped Ether'
-symbol: public(String[4])  # = 'WETH'
-decimals: public(uint256)  # = 18
+NAME: constant(String[14])    = 'Wrapped Ether'
+SYMBOL: constant(String[4])   = 'WETH'
+DECIMALS: constant(uint256)   = 18
 
 event Approval:
   src: indexed(address) 
@@ -28,12 +28,6 @@ event Withdrawal:
 
 balanceOf: public(HashMap[address, uint256])
 allowance: public(HashMap[address, HashMap[address, uint256]])
-
-@external
-def __init__():
-  self.name = 'Wrapped Ether'
-  self.symbol = 'WETH' 
-  self.decimals = 18
 
 @internal
 def _deposit(src: address, val: uint256):
@@ -60,6 +54,23 @@ def withdraw(wad: uint256):
 @view
 def totalSupply() -> uint256:
   return self.balance
+
+@external
+@view
+def name() -> String[14]:
+  return NAME
+
+@external
+@view
+def symbol() -> String[4]:
+  return SYMBOL
+
+
+@external
+@view
+def decimals() -> uint256:
+  return DECIMALS
+
 
 @external
 def approve(guy: address, wad: uint256) -> bool:
