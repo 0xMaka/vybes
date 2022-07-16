@@ -34,7 +34,8 @@
 
 :memo: *Will add more flash loan examples on other contracts*
 
-## :bank: vault.vy
+## :bank: vault.vy - ^0.2.8
+
 **Testing:**
 - *What a vy implementation of the vault from solidity--by-example might look like*
  
@@ -50,13 +51,11 @@
   - Will launch an "interfacestation" that you can use to view a balance of a token, total supply or exchange two tokens using the router provided.
   - instructions: constructor arguments include weth, and router address. Any univ2 style router should work, grab the weth address from the router.
 
-## :ticket: VIM.vy - ^0.2.16
+## :ticket: NAS.vy - ^0.2.8
 **Testing:** 
 - *Minimum viable token, used in other testing.*
 
 **Contract:** 
-- Will deploy a VIM token, sending the total supply to deployer. Contract features just 3 writable functions, approve, transfer and transferFrom.
+- Will deploy a simple token, sending the total supply to deployer. Contract features just 3 writable functions, approve, transfer and transferFrom.
   chain agnostic
-  - instructions: none
-
-  :memo: *To be replaced with generic example*
+  - Instructions: constructor takes 4 parameters, name (string), symbol(string), decimals(uint256), and supply(uint256)
