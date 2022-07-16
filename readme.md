@@ -57,5 +57,5 @@
 
 **Contract:** 
 - Will deploy a simple token, sending the total supply to deployer. Contract features just 3 writable functions, approve, transfer and transferFrom.
-  chain agnostic
-  - Instructions: constructor takes 4 parameters, name (string), symbol(string), decimals(uint256), and supply(uint256)
+  chain agnostic.
+- Instructions: constructor takes 4 parameters, name (string), symbol(string), decimals(uint256), and supply(uint256)
