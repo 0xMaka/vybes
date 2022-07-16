@@ -56,37 +56,34 @@ def _burn(_from: address, _shares: uint256):
 #-- external functions                                                                                                  
 @external                                                                                                               
 def deposit(_amount: uint256):                                                                                          
-#  a= amount                                                                                                            
+#  a = amount                                                                                                            
 #  B = balance of token before deposit                                                                                  
 #  T = total supply                                                                                                     
 #  s = shares to mint                                                                                                   
 #                                                                                                                       
 #    (T + s) / T = (a + B) / B                                                                                          
-#    s = aT / B                                                                                                         
+#    s = aT / B
+#-
   shares: uint256 = 0                                                                                                   
   if (self.totalSupply == 0):                                                                                           
     shares = _amount                                                                                                    
   else:                                                                                                                 
     shares = (_amount * self.totalSupply) / IERC20(self.token).balanceOf(self)                                          
-                                                                                                                        
   self._mint(msg.sender, shares)                                                                                        
   IERC20(self.token).transferFrom(msg.sender, self, _amount)                                                            
-  log Deposit(msg.sender, _amount, shares)                                                                              
-#-                                                                                                                      
-                                                                                                                        
-#--                                                                                                                     
+  log Deposit(msg.sender, _amount, shares)                                                                                                                                                                                                    
+                                                                                                                                                                                                                                             
 @external                                                                                                               
 def withdraw(_shares: uint256):                                                                                         
-#  a= amount                                                                                                            
+#  a = amount                                                                                                            
 #  B = balance of token before withdraw                                                                                 
 #  T = total supply                                                                                                     
 #  s = shares to burn                                                                                                   
 #                                                                                                                       
 #    (T - s) / T = (B - a) / B                                                                                          
 #    a = sB / T                                                                                                         
-#-                                                                                                                      
-  amount: uint256 = (_shares * IERC20(self.token).balanceOf(self)) / self.totalSupply                                   
-                                                                                                                        
+#-
+  amount: uint256 = (_shares * IERC20(self.token).balanceOf(self)) / self.totalSupply                                                                                                                                                     
   self._burn(msg.sender, _shares)                                                                                       
   IERC20(self.token).transfer(msg.sender, amount)                                                                       
   log Withdraw(msg.sender, _shares, amount)                                                                                                                                                                                                     
