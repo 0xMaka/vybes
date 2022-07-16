@@ -89,8 +89,7 @@ def withdraw(_shares: uint256):
                                                                                                                         
   self._burn(msg.sender, _shares)                                                                                       
   IERC20(self.token).transfer(msg.sender, amount)                                                                       
-  log Withdraw(msg.sender, _shares, amount)                                                                             
-                                                                                                                        
-# --                                                                                                                    
+  log Withdraw(msg.sender, _shares, amount)                                                                                                                                                                                                     
+#-                                                                                                                    
                                                                                                                         
 #- 1love                                                                                                                
