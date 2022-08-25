@@ -57,6 +57,9 @@ def get_duration() -> uint256:
 @external
 @view
 def fetch_remaining(_account: address) -> uint256:
-  return self.lock_time[_account] - block.timestamp
+    if self.lock_time[_account] == 0:
+      return 0
+    else:
+      return self.lock_time[_account] - block.timestamp
 
 # 1 love
