@@ -28,8 +28,8 @@ load_dotenv()
 w3 = Web3(HTTPProvider(getenv('NODE')))
 w3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
-acc = getenv('OPS2')
-key = getenv('KEY2')
+acc = getenv('ACC')
+key = getenv('KEY')
 
 fn_hash = '0xbc25cf77'
 fn_call = '{:0>64}'.format(acc[2:])
@@ -113,7 +113,6 @@ def get_tx() -> dict:
         'maxPriorityFeePerGas': w3.toWei('40', 'gwei'),
         'nonce': w3.eth.get_transaction_count(acc)
         }
-
 
 def pj(d: dict) -> str:
   for key, value in d.items():
