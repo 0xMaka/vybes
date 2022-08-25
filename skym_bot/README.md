@@ -1,0 +1,2 @@
+# skym
+basic bot example
